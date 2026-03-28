@@ -11,7 +11,7 @@ export class ExpenseService {
     'Work', 'Personal', 'Grocery', 'Unitiles', 'Shopping', 'Travel', 'Food'
   ])
 
-  transactionCount = computed(() => this.expenses.length);
+  transactionCount = computed(() => this.expenses().length);
 
   totalExpense = computed(() => 
   this.expenses().reduce((sum, item) => sum + item.amount, 0));
