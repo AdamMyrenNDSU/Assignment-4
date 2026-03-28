@@ -1,31 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Expense, ExpenseCategory } from '../../models/expense';
 import { FormsModule } from '@angular/forms';
+import { ExpenseService } from '../../services/expense-service';
 
 @Component({
   selector: 'app-add-expense',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './add-expense.html',
   styleUrl: './add-expense.css',
 })
 export class AddExpense {
-  //categories to be selected
-  categories: ExpenseCategory[] = ['Work', 'Personal', 'Grocery', 'Unitiles', 'Shopping', 'Travel', 'Food']
+  //inject service
+  private expenseService = inject(ExpenseService)
 
+  //inital expense placeholder
   expense: Partial<Expense> = {
     title: '',
     amount: 0,
     category: undefined
   };
 
+  categories = this.expenseService.categories();
+
   //When form is submited do this
   onSubmit() {
-    const finalExpense: Expense = {
-      ...this.expense,
-      id: crypto.randomUUID()
-    } as Expense
+    //make it inot an expense
+    const finalExpense: Expense = {title:this.expense.title, amount: this.expense.amount, category: this.expense.category, id:crypto.randomUUID()} as Expense;
 
-    //Go back to starting confingureation 
+    //actually add the expense
+    this.expenseService.addExpense(finalExpense);
+
+    //reset to initial
     this.expense = {title: '', amount: 0, category: undefined}
   }
 }

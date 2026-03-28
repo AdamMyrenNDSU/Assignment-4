@@ -1,21 +1,20 @@
-<p>add-expense works!</p>
-
 <div class="container mt-4 w-50">
     <div class="card shadow sm">
         <form (ngSubmit)="onSubmit()">
             <div class="card-body">
                 <h4 class="card-title mb-3 text-center">Add an Expense</h4>
                 <div class="mb-3">
-                    <label class="form-label">Title</label>
-                    <input type="text" placeholder="Enter the expense title" class="form-control ng-untouched ng-pristine ng-valid" [(ngmodel)]='expense.title'>
+                    <label class="form-label">Title</label>                    
+                    <input name="title" type="text" placeholder="Enter the expense title" class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]='expense.title'>
+
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Amount</label>
-                    <input type="number" placeholder="0" class="form-control ng-untouched ng-pristine ng-valid" [(ngmodel)]='expense.amount'>
+                    <input name="amount" type="number" placeholder="0" class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]='expense.amount'>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Category</label>
-                    <select class="form-select ng-untouched ng-pristine ng-valid" [(ngmodel)]='expense.category'>
+                    <select name="category" class="form-select ng-untouched ng-pristine ng-valid" [(ngModel)]='expense.category'>
                         <option value disabled selected>Select Category</option>
                         @for (category of categories; track category){
                             <option [value]="category">{{category}}</option>
@@ -23,7 +22,7 @@
                     </select>
                 </div>
                 <div class="d-grid">
-                    <button class="btn btn-primary">Add Expense</button>
+                    <button type="submit" class="btn btn-primary">Add Expense</button>
                 </div>
             </div>
         </form>

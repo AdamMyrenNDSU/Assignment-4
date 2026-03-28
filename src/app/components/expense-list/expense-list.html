@@ -1,1 +1,10 @@
-<p>expense-list works!</p>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Expenses</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @for (item of expenseService.expenses(); track item.id){
+                <app-expense-item [expense]="item"></app-expense-item>
+            }
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Expense } from '../../models/expense';
 
 @Component({
   selector: 'app-expense-item',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './expense-item.css',
 })
 export class ExpenseItem {
-
+  expense = input.required<Expense>();
 }
