@@ -8,7 +8,7 @@ export class ExpenseService {
   readonly expenses = signal<Expense[]>([]);
 
   readonly categories = signal<ExpenseCategory[]>([
-    'Work', 'Personal', 'Grocery', 'Unitiles', 'Shopping', 'Travel', 'Food'
+    'Work', 'Personal', 'Grocery', 'Utilites', 'Shopping', 'Travel', 'Food'
   ])
 
   transactionCount = computed(() => this.expenses().length);

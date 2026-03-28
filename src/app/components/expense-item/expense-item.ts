@@ -1,12 +1,27 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Expense } from '../../models/expense';
+import { ExpenseService } from '../../services/expense-service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-expense-item',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './expense-item.html',
   styleUrl: './expense-item.css',
 })
 export class ExpenseItem {
   expense = input.required<Expense>();
+
+  expenseService = inject(ExpenseService)
+
+  getColor: Record<string, string> = {
+    'Work' : 'text-primary',
+    'Personal' : 'text-secondary',
+    'Grocery' : 'text-success',
+    'Utilites' : 'text-danger',
+    'Shopping' : 'text-warning',
+    'Travel' : 'text-info',
+    'Food' : 'text-dark'
+  }
+
 }
