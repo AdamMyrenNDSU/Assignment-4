@@ -31,4 +31,14 @@ export class ExpenseService {
   deleteExpense(id : string){
     this.expenses.update(prev => prev.filter(e => e.id !== id));
   }
+
+  getExpenseById(id: string): Expense | undefined {
+    return this.expenses().find(e => e.id === id);
+  }
+
+  updateExpense(id: string, updateData: Partial<Expense>){
+    this.expenses.update(prev =>
+      prev.map(e => (e.id === id ? {...e, ...updateData} :e))
+    )
+  }
 }

@@ -6,7 +6,7 @@
         </div>
         <div class="text-end">
             <div class="fw-bold text-success" [class.text-danger]="expense().amount > 100"> ${{expense().amount}} </div>
-            <button class="btn btn-primary btn-sm m-2">Edit</button> <!-- Myabe inplement link-->
+            <button class="btn btn-primary btn-sm m-2" [routerLink]="['/edit', expense().id]">Edit</button> <!-- Myabe inplement link-->
             <button class="btn btn-danger btn-sm m-2" (click)="expenseService.deleteExpense(expense().id)">Delete </button>
         </div>
     </div>
